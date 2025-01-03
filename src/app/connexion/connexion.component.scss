@@ -1,0 +1,101 @@
+.submit-message {
+  color: #fff; /* Couleur du texte */
+  
+  padding: 20px; /* Espace autour du texte */
+  border-radius: 5px; /* Coins arrondis */
+  margin: 20px auto; /* Espace au-dessus et en dessous, centré */
+  text-align: center; /* Centrer le texte */
+  font-size: 2.5rem; /* Grande taille de police */
+  width: 80%; /* Largeur de 80% de l'écran */
+  max-width: 600px; /* Largeur maximale pour ne pas dépasser */
+  height: 50vh; /* Hauteur à 50% de la hauteur de la fenêtre */
+  display: flex; /* Utiliser flexbox */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  position: fixed; /* Position fixe pour le garder visible */
+  top: 50%; /* Placer au milieu de l'écran */
+  left: 50%; /* Placer au milieu de l'écran */
+  transform: translate(-50%, -50%); /* Centrer l'élément */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombre pour le style */
+  animation: fadeOut 1s forwards;
+}
+.typeMsgS{
+  background-color: #28a745; /* Vert pour indiquer le succès */
+}
+.typeMsgError{
+  background-color: #d43912; /* Vert pour indiquer le succès */
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1; /* Opacité au début */
+  }
+  99% {
+    opacity: 1; /* Rester visible jusqu'à 99% de l'animation */
+  }
+  100% {
+    opacity: 0; /* Disparaître complètement à 100% */
+  }
+}
+
+.typeMsgS {
+  background-color: #28a745; /* Vert pour indiquer le succès */
+}
+
+.typeMsgError {
+  background-color: #d43912; /* Rouge pour indiquer l'erreur */
+}
+
+.flex-container{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+.connexion-container {
+    max-width: 400px;
+    margin: 0 auto; // Centre le conteneur
+    padding: 2rem;
+    border: 1px solid #ccc; // Bordure autour du formulaire
+    border-radius: 5px; // Arrondir les bords
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Ombre pour le relief
+    background-color: #f9f9f9; // Couleur de fond légère
+    
+    h2 {
+      text-align: center; // Centre le titre
+      margin-bottom: 1.5rem; // Espacement en bas
+    }
+  
+    .form-group {
+      margin-bottom: 1rem; // Espacement entre les groupes de formulaire
+  
+      label {
+        display: block; // Affiche le label en tant que bloc
+        margin-bottom: 0.5rem; // Espacement en bas du label
+      }
+  
+      .form-control {
+        width: 100%; // Prend toute la largeur du conteneur
+        padding: 0.5rem; // Padding intérieur
+        border: 1px solid #ccc; // Bordure
+        border-radius: 4px; // Arrondir les bords
+        transition: border-color 0.3s; // Transition pour la couleur de la bordure
+  
+        &:focus {
+          border-color: #007bff; // Couleur de la bordure au focus
+          outline: none; // Enlève le contour par défaut
+        }
+      }
+    }
+  
+    .btn {
+      width: 100%; // Bouton prend toute la largeur
+      padding: 0.5rem; // Padding
+    }
+  
+    .error-message {
+      color: red; // Couleur rouge pour les messages d'erreur
+      text-align: center; // Centre le message d'erreur
+      margin-top: 1rem; // Espacement en haut
+    }
+  }
+  

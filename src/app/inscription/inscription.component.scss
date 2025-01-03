@@ -1,0 +1,112 @@
+.container {
+  max-width: 500px; // Largeur maximale pour le formulaire
+  margin: 0 auto; // Centrer le conteneur horizontalement
+  padding: 20px; // Espacement interne
+  background-color: #f8f9fa; // Couleur de fond du conteneur
+  border-radius: 10px; // Coins arrondis
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Ombre pour le style
+}
+
+h2 {
+  color: #333; // Couleur du titre
+  margin-bottom: 20px; // Espace en dessous du titre
+  text-align: center; // Centrer le texte du titre
+}
+
+.form-group {
+  margin-bottom: 15px; // Espace entre les groupes de formulaire
+}
+
+.form-control {
+  border: 1px solid #ced4da; // Bordure du champ
+  border-radius: 5px; // Coins arrondis
+  padding: 10px; // Espacement interne
+  transition: border-color 0.3s; // Animation de transition
+}
+
+.form-control:focus {
+  border-color: #007bff; // Bordure bleue lorsque le champ est sélectionné
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Ombre lors de la sélection
+}
+.submit-message {
+  color: #fff; /* Couleur du texte */
+  
+  padding: 20px; /* Espace autour du texte */
+  border-radius: 5px; /* Coins arrondis */
+  margin: 20px auto; /* Espace au-dessus et en dessous, centré */
+  text-align: center; /* Centrer le texte */
+  font-size: 2.5rem; /* Grande taille de police */
+  width: 80%; /* Largeur de 80% de l'écran */
+  max-width: 600px; /* Largeur maximale pour ne pas dépasser */
+  height: 50vh; /* Hauteur à 50% de la hauteur de la fenêtre */
+  display: flex; /* Utiliser flexbox */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  position: fixed; /* Position fixe pour le garder visible */
+  top: 50%; /* Placer au milieu de l'écran */
+  left: 50%; /* Placer au milieu de l'écran */
+  transform: translate(-50%, -50%); /* Centrer l'élément */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombre pour le style */
+  animation: fadeOut 1s forwards;
+}
+.typeMsgS{
+  background-color: #28a745; /* Vert pour indiquer le succès */
+}
+.typeMsgError{
+  background-color: #d43912; /* Vert pour indiquer le succès */
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1; /* Opacité au début */
+  }
+  99% {
+    opacity: 1; /* Rester visible jusqu'à 99% de l'animation */
+  }
+  100% {
+    opacity: 0; /* Disparaître complètement à 100% */
+  }
+}
+
+.typeMsgS {
+  background-color: #28a745; /* Vert pour indiquer le succès */
+}
+.submit-message {
+  color: #fff; // Couleur du texte pour le message de succès
+  background-color: #28a745; // Couleur de fond pour le message de succès
+  padding: 10px; // Espacement interne
+  border-radius: 5px; // Coins arrondis
+  margin-top: 15px; // Espace au-dessus du message
+  text-align: center; // Centrer le texte
+  font-size: 1.2rem; // Taille de police du message
+  transition: opacity 0.5s; // Transition pour l'apparition/disparition
+}
+
+.error-message {
+  color: #fff; // Couleur du texte pour le message d'erreur
+  background-color: #d43912; // Couleur de fond pour le message d'erreur
+  padding: 10px; // Espacement interne
+  border-radius: 5px; // Coins arrondis
+  margin-top: 15px; // Espace au-dessus du message
+  text-align: center; // Centrer le texte
+  font-size: 1.2rem; // Taille de police du message
+}
+
+// Styles pour le bouton
+.btn {
+  width: 100%; // Largeur complète pour le bouton
+  padding: 10px; // Espacement interne
+  font-size: 1rem; // Taille de police du bouton
+  border: none; // Supprimer la bordure par défaut
+  border-radius: 5px; // Coins arrondis
+  cursor: pointer; // Curseur pointer pour indiquer que c'est cliquable
+  transition: background-color 0.3s; // Animation pour la couleur de fond
+}
+
+.btn-primary {
+  background-color: #007bff; // Couleur de fond bleue pour le bouton principal
+  color: white; // Couleur du texte pour le bouton principal
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; // Couleur de fond lorsque survolé
+}

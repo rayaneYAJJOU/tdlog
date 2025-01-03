@@ -1,0 +1,34 @@
+<nav class="top-bar navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="logo navbar-brand">
+            <h1>Shop Free</h1>
+        </div>
+    
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <app-nav-category></app-nav-category>
+            
+            <app-search-bar></app-search-bar>
+
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a routerLink="listProduct" class="nav-link"  >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="pannier" class="nav-link">Pannier</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="mesCommande" class="nav-link">Mes Commandes</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf=" !araliya()" routerLink="connexion" class="nav-link" >Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="!araliya()  " routerLink="inscription" class="nav-link" >Sign Up</a>
+                    <a *ngIf=" araliya()" routerLink="listProduct" class="nav-link" (click)="change()" >Log out</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,52 @@
+/* Styles pour l'input group */
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem; /* Correspond à mb-3 */
+  margin-top: 0.5rem;
+  
+  /* Style de l'input de recherche */
+  input.search-click {
+    
+    flex: 0.5; /* Prend toute la largeur disponible */
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff; /* Couleur bleue lorsqu'on est focalisé */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Légère ombre bleue */
+    }
+
+    &::placeholder {
+      color: #aaa; /* Couleur du texte de l'espace réservé */
+    }
+  }
+
+  /* Style du bouton */
+  button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #bac44a;
+    color: white;
+    border: 1px solid #bac44a;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      background-color: #5accf1; /* Couleur plus foncée au survol */
+      border-color: #db2525;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<h1 style="text-align: center;">Panier</h1>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Description</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>  
+      <tr *ngFor="let ligne of ligneCommande | keyvalue">
+        <td><img [src]="ligne.value.produit.thumbnail" alt="{{ligne.value.produit.title}}" style="width: 100px;"></td>
+        <td>{{ligne.value.produit.title}}</td>
+      
+        <td>{{ligne.value.produit.description}}</td>
+
+        <td>{{ligne.value.produit.price}} €</td>
+
+        <td>{{ligne.value.quantite}}</td>
+        
+        <td>{{ligne.value.produit.price * ligne.value.quantite}} €</td>
+      </tr>
+      
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" class="text-right"><strong>Prix Total :</strong></td>
+        <td><strong>{{ calculateTotalPrice() }} €</strong></td>
+        <td colspan="4" class="submit-container">
+        
+          <button class="submit" [routerLink]="['/mesCommande']">Commander</button>
+        </td>
+      </tr>
+      
+      
+    </tfoot>
+  </table>
+</div>

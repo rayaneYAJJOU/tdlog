@@ -1,0 +1,51 @@
+.top-bar {
+  background-color: #1b2229 ; // Couleur de fond sombre
+  color: white; // Couleur du texte
+
+  .container-fluid {
+    display: flex; // Utiliser Flexbox pour le positionnement
+    align-items: center; // Aligner verticalement les éléments
+    justify-content: space-between; // Espacer les éléments entre eux
+    padding: 0.4rem; // Ajouter un peu de padding
+
+    .logo {
+      h1 {
+        margin: 0; // Supprimer la marge par défaut
+        font-size: 1.5rem; // Taille du texte
+      }
+    }
+
+    .collapse {
+      display: flex; // Utiliser Flexbox pour le contenu collapsible
+      align-items: center; // Aligner les éléments verticalement
+      flex-grow: 1; // Permet au contenu de prendre l'espace disponible
+
+      app-nav-category {
+        margin: 0 1rem; // Marge latérale
+      }
+
+      app-search-bar {
+        margin: 0 1rem; // Marge latérale
+      }
+
+      .navbar-nav {
+        display: flex; // Utiliser Flexbox pour la liste des liens
+        align-items: center; // Aligner verticalement
+        margin-left: auto; // Pousser les éléments vers la droite
+
+        .nav-item {
+          margin-left: 1rem; // Marge entre les éléments de navigation
+
+          .nav-link {
+            color: white; // Couleur des liens
+            text-decoration: none; // Enlever le soulignement
+
+            &:hover {
+              text-decoration: underline; // Soulignement au survol
+            }
+          }
+        }
+      }
+    }
+  }
+}

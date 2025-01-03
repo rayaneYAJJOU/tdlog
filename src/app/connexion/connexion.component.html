@@ -1,0 +1,31 @@
+<div class="connexion-container">
+    <h2>Connexion</h2>
+    <form (ngSubmit)="onSubmit()" #connexionForm="ngForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+          type="email" id="email" required [(ngModel)]="email" name="email" class="form-control" placeholder="Entrez votre email" 
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" required [(ngModel)]="password" name="password" class="form-control" placeholder="Entrez votre mot de passe" 
+        />
+      </div>
+      <div class="flex-container">
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+        <button [routerLink]="['/inscription']" class="btn btn-primary"  >S'inscrire</button>
+      </div>
+      
+      
+      
+         
+
+    </form>
+    
+    <div *ngIf="!isConnected && !isFirst" class="error-message" >connexion echouee</div>
+    <div *ngIf="isConnected && !isFirst" class="submit-message typeMsgS"  >connexion reussit</div>
+    
+  </div>
+  

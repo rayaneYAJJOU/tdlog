@@ -1,0 +1,170 @@
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Table styles with grid */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  
+    /* Adds a grid outline to the table */
+    thead, tbody, tfoot, th, td {
+      border: 1px solid #ccc;
+    }
+  
+    /* Styling for table header */
+    thead {
+      background-color: #f2f2f2;
+      th {
+        padding: 10px;
+        text-align: left;
+        font-weight: bold;
+      }
+    }
+  
+    /* Styling for table body rows */
+    tbody {
+      tr {
+        &:hover {
+          background-color: #f9f9f9;
+        }
+  
+        td {
+          padding: 10px;
+          text-align: left;
+          vertical-align: middle;
+          background-color: #fff; /* White background for rows */
+        }
+  
+        /* Image styling */
+        img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+    }
+  
+    /* Styling for table footer */
+    tfoot {
+      td {
+        padding: 10px;
+        text-align: right;
+        font-weight: bold;
+        background-color: #f2f2f2; /* Footer background */
+      }
+    }
+  }
+  
+  /* Button styles */
+  .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  
+    &-primary {
+      background-color: #007bff;
+      color: #fff;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  
+    &-danger {
+      background-color: #dc3545;
+      color: #fff;
+  
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+  
+  /* Input group styles for quantity adjustment */
+  .input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    input {
+      width: 40px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin: 0 5px;
+      padding: 5px;
+    }
+  
+    button {
+      background-color: #ddd;
+      color: #333;
+      border: 1px solid #ddd;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+  
+      &:hover {
+        background-color: #ccc;
+      }
+    }
+  }
+  
+  /* Badge for rating */
+  .badge {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: #ffc107;
+    color: #333;
+  }
+  
+  /* Additional utility styles */
+  .text-right {
+    text-align: right;
+  }
+  
+  .text-muted {
+    color: #6c757d;
+  }
+  .submit-container {
+    display: flex;
+    justify-content: flex-end; /* Aligner à droite */
+    padding: 20px;
+  }
+  
+  .submit {
+    background-color: #28a745;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  
+    &:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+  
+    &:active {
+      background-color: #1e7e34;
+      transform: scale(1);
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(40, 167, 69, 0.6);
+    }
+  }
+  

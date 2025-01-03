@@ -1,0 +1,6 @@
+<div class="dropdown" >
+    <button class="btn btn-secondary dropdown-toggle" type="button" (click)="toggleDropdown()" >Categories</button>
+    <ul *ngIf="dropDownOpen" class="dropdown-menu">
+        <button class="dropdown-item" *ngFor="let cat of categories" (click)="sendCategory(cat.slug)"  >{{cat.name}}</button>
+    </ul>   
+</div>
