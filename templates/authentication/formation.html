@@ -1,0 +1,477 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'css/Eas_favicon.ico' %}">
+    <title>Easier</title>
+    <style>
+        body {
+            font-family: serif, sans-serif;
+            background-color: #f6f6f6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fcfceb; 
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            max-width: 120px;
+            height: auto;
+            background-color: transparent;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .nav-list li {
+            margin-left: 25px;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: #000000; 
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-list li a:hover {
+            color: #FFD700; 
+            transform: scale(1.1); 
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-buttons button {
+            background-color: #FFD700; /* Bright gold color */
+            color: #2C2A4A; /* Matches the navbar background */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #E6B800; /* Slightly darker gold */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        .auth-buttons button a {
+            color: #2C2A4A; /* Matches the button color */
+            text-decoration: none;
+        }
+
+        .fi {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 40px 0; /* Increased space around this section */
+        }
+
+        .Lycée, .Prépa {
+            width: 40%; /* Set both sections to take up 45% of the container's width */
+            text-align: center;
+            display: inline-block; /* Ensures both containers align on the same line */
+            vertical-align: top; /* Align the top edges of the containers */
+        }
+
+        .Lycée img {
+            width: 130%; /* Ensure images take the full width of their containers */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 15px; /* Optional: Add rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+        .Prépa img {
+            width: 90%; /* Ensure images take the full width of their containers */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 15px; /* Optional: Add rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .Lycée, .Prépa {
+                width: 100%; /* Stack images vertically on smaller screens */
+            }
+        }
+
+
+        /* Container for the section */
+        .mat {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Styling for the header */
+        .mat h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Container for the buttons */
+        .buttonsm {
+            display: block;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+        }
+
+        /* Styling for each button */
+        .buttonsm button {
+            border: 1px solid #ccc; 
+            padding: 30px 20px; 
+            text-align: center; 
+            font-size: 20px; /* Text size */
+            font-weight: bold; /* Bold text */
+            background-color: #fff; /* White background */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+        }
+
+        /* Hover effect for buttons */
+        .buttonsm button:hover {
+            background-color: #f0f0f0; /* Light grey background on hover */
+        }
+
+        /* Responsive layout for smaller screens */
+        @media (max-width: 768px) {
+            .buttonsm {
+                grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .buttonsm {
+                grid-template-columns: 1fr; /* Single column for very small screens */
+            }
+        }
+
+
+        /* Pricing Section */
+        .pricing-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f6f6f6;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-top: 60px; /* Add more space above this section */
+            margin-bottom: 60px; /* Add more space below this section */
+        }
+
+/* The rest of your CSS remains the same */
+
+
+
+        /* Pricing Section */
+
+        .pricing-container:hover {
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #E6B800;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 25px;
+            background-color: #e0f7fa;
+            border-radius: 12px;
+            border-left: 8px solid #E6B800;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            background-color: #b2ebf2;
+        }
+
+        h2 {
+            color: #E6B800;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        p, ul {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #004d40;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        ul li {
+            background: none;
+            background-size: 20px;
+            background-position: 0 5px;
+            padding-left: 40px;
+            margin-bottom: 12px;
+        }
+
+        span {
+            font-weight: bold;
+            color: #000000;
+            background-color: #fcfceb;
+            padding: 3px 8px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #E6B800;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e7d37f;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #4A4DE7;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 50px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .footer-section ul li i {
+            margin-right: 10px;
+            color: white;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom p {
+            margin: 10px 0;
+            color: white;
+        }
+
+        .footer-bottom a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            margin-top: 10px;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #FFD700;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .footer-container {
+                padding: 20px;
+            }
+
+            .footer-section {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .footer-section ul li {
+                justify-content: center;
+            }
+        }
+        
+        .matieres{
+            text-align: center;
+            margin-top: 100px;
+            width: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'css/logo_de_easier.png' %}" alt="Easier Logo" width="125px">
+        </div>
+        <ul class="nav-list">
+            <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Accueil</a></li>
+            <li><a href="{% url 'formation' %}"><i class="fa fa-graduation-cap"></i> Formation</a></li>
+            <li><a href="{% url 'cours' %}"><i class="fa fa-file-alt"></i> Cours et résumés</a></li>
+            <li><a href="{% url 'contact' %}"><i class="fa fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            {% if user.is_authenticated %}
+                <button class="signout"><a href="/signout">Déconnecter</a></button>
+            {% else %}
+                <button class="signup"><a href="/signup">Inscription</a></button>
+                <button class="signin"><a href="/signin">Connection</a></button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="fi">
+        <h1 class="headert">Cours de soutien adaptés aux filières suivantes :</h1>
+        <div class="Lycée">
+            <img src="{% static 'css/Lycée.png' %}" alt="Lycée">
+        </div>
+        <div class="Prépa">
+            <img src="{% static 'css/Prepa.png' %}" alt="Prépa">
+        </div>
+    </div>
+    <div class="mat">
+        <div class="matieres">
+            <img src="{% static 'css/matieres.jpeg' %}" alt="matières">
+        </div>
+    </div>
+
+    </div>
+    <div class="pricing-container">
+        <h1>Nos formation</h1>
+
+        <div class="section">
+            <h2>Matière unique (Lycée)</h2>
+            <p>1 séances par semaine : <span>400 DH</span> par mois.</p>
+            <p>Sciences de l'ingénieur : <span>600 DH</span> par mois pour une séance par semaine.</p>
+        </div>
+
+        <div class="section">
+            <h2>Pack de 2 matières (Lycée)</h2>
+            <p>2 séances par semaine: <span>700 DH</span> par mois (remise de 100 DH par rapport au coût de 800 DH).</p>
+        </div>
+
+        <div class="section">
+            <h2>Pack de 3 matières (Lycée)</h2>
+            <p>3 séances par semaine : <span>1000 DH</span> par mois (remise de 200 DH par rapport au coût de 1200 DH).</p>
+        </div>
+
+        <div class="section">
+            <h2>Pack de 4 matières (Lycée)</h2>
+            <p>4 séances par semaine : <span>1200 DH</span> par mois (remise de 400 DH par rapport au coût de 1600 DH).</p>
+        </div>
+
+        <div class="section">
+            <h2>Prépa</h2>
+            <p>Matières proposées : Analyse, Algèbre, Physique, Chimie, Anglais, Français, Coding (Python), et TIPE.</p>
+            <p>Tarification : <span>400 DH</span> par séance de 4 heures.</p>
+        </div>
+        <button type="button"><a href="{% url 'contact' %}">Contactez-nous</a></button>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> Téléphone: 0774773296 / 0617667636</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="{% url 'cours' %}">Nos cours</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyrights 2024 tous droits réservés. | <a href="#">Politique de confidentialité</a></p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/easier_succeed_together?igsh=MW1pNXZydDRvenJ1cg=="><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/Easier.Succeed.Together?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com/@easiersucceed_together?si=0NIj7F7L9mLDMNHz"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

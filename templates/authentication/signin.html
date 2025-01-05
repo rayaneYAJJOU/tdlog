@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Se Connecter</title>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'css/Eas_favicon.ico' %}">
+
+    <style>
+        .overlay-container {
+            background: linear-gradient(#ff5005, #ffa305, #ffd105);
+        }
+        .remember-me-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Style pour la case à cocher */
+        .remember-me-container input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        /* Étiquette pour la case à cocher */
+        .remember-me-container label {
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Style pour le lien mot de passe oublié */
+        .remember-me-container .forgot-password {
+            font-size: 14px;
+            color: #ff6600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .remember-me-container .forgot-password:hover {
+            color: #e65c00;
+        }
+
+        /* Style pour le bouton */
+        .btn {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #e65c00;
+        }
+
+        .si {
+            background-color: #ff5005;
+            border-radius: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sign-in-container">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'css/logo_de_easier.png' %}" alt="Logo Easier" width="125px"></a>
+        </div>
+        <h3>Connectez-vous à votre compte !</h3>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message :</strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        <form method="post" action="{% url 'signin' %}" class="mb-2">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            <div class="form-group">
+                <input type="text" class="form-control" id="username" name="username" 
+                       value="{{ request.COOKIES.username }}" placeholder="Entrez votre nom d'utilisateur" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Entrez votre mot de passe" required>
+            </div>
+            
+            <div class="remember-me-container">
+                <input type="checkbox" id="remember_me" name="remember_me">
+                <label for="remember_me">Se souvenir de moi</label>
+                <p><a href="{% url 'password_reset' %}">Mot de passe oublié?</a></p>
+            </div>
+            
+            <button type="submit" class="btn">Se connecter</button>
+        </form>        
+        
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <h1>Bonjour, Ami !</h1>
+            <p>Entrez vos informations personnelles et commencez votre aventure avec nous</p>
+            <div class="si">
+                <a href="{% url 'signup' %}"><button class="ghost btn">S'inscrire</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

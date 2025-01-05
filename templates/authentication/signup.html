@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'css/Eas_favicon.ico' %}">
+
+    <title>S'inscrire</title>
+    <style>
+        /* Existing CSS ... */
+
+        body {
+            background-color: #f6f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .video-container {
+            width: 48%; /* Video takes almost half of the container width */
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container {
+            width: 48%; /* Form takes the other half of the container width */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-container .logo {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .video-container,
+            .form-container {
+                width: 100%;
+                margin-bottom: 20px; /* Space between video and form in mobile view */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="{% static 'css/p.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="form-container">
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'css/logo_de_easier.png' %}" alt="Logo Easier" width="125px"></a>
+            </div>
+            <h3>Créez votre compte !</h3>
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <strong>Message :</strong> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            <form method="post" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Créez un nom d'utilisateur (utilisez uniquement des lettres et des chiffres)" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Entrez votre prénom" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Entrez votre nom de famille" required>
+                </div>
+                <div class="form-group">
+                    <label for="mainLevel">Choisissez votre niveau</label>
+                    <select id="mainLevel" name="mainLevel">
+                        <option value="tronc_commun">Tronc commun</option>
+                        <option value="premiere_annee_bac">1ère année Bac</option>
+                        <option value="deuxieme_annee_bac">2ème année Bac</option>
+                        <option value="prepa">Prépa</option>
+                    </select>
+                    <div id="secondarySelectContainer">
+                        <label for="subLevel">Choisissez un sous-niveau :</label>
+                        <select id="subLevel" name="subLevel">
+                            <!-- Les options seront ajoutées ici par JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Créez votre mot de passe" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirmez votre mot de passe" required>
+                </div>
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainLevelSelect = document.getElementById('mainLevel');
+            const subLevelSelect = document.getElementById('subLevel');
+        
+            function populateSubLevels() {
+                const selectedValue = mainLevelSelect.value;
+        
+                // Clear the previous options
+                subLevelSelect.innerHTML = '';
+        
+                // Define the options for each category
+                const options = {
+                    tronc_commun: [
+                        { value: 'tronc_comm_sci', text: 'Tronc Commun Scientifique' },
+                        { value: 'tronc_comm_tech', text: 'Tronc Commun Technologique' }
+                    ],
+                    premiere_annee_bac: [
+                        { value: 'science_math', text: 'Science Math' },
+                        { value: 'science_experimental', text: 'Science Expérimentale' },
+                        { value: 'science_et_techno_ele1', text: 'Sciences et technologies éléctriques 1ère' },
+                        { value: 'science_et_techno_meca1', text: 'Sciences et technologies mécanique 1ère' }
+                    ],
+                    deuxieme_annee_bac: [
+                        { value: 'scma', text: 'Sc math A' },
+                        { value: 'scmb', text: 'Sc math B' },
+                        { value: 'scpc', text: 'Sc Physique et chimie' },
+                        { value: 'scvt', text: 'Sc de la vie et de la terre'},
+                        { value: 'science_et_techno_ele2', text: 'Sciences et technologies éléctriques 2ème' },
+                        { value: 'science_et_techno_meca2', text: 'Sciences et technologies mécanique 2ème' }
+                    ],
+                    prepa: [
+                        { value: 'mpsi', text: 'MPSI' },
+                        { value: 'psi', text: 'PSI' },
+                        { value: 'ptsi', text: 'PTSI' },
+                        { value: 'tsi_1', text: 'TSI 1ère année' },
+                        { value: 'mp', text: 'MP' },
+                        { value: 'tsi_2', text: 'TSI 2ème année' }
+                    ]
+                };
+        
+                // Populate the subLevel dropdown based on the selected mainLevel
+                if (options[selectedValue]) {
+                    options[selectedValue].forEach(option => {
+                        const newOption = document.createElement('option');
+                        newOption.value = option.value;
+                        newOption.textContent = option.text;
+                        subLevelSelect.appendChild(newOption);
+                    });
+                }
+            }
+        
+            // Populate the subLevel dropdown on page load
+            populateSubLevels();
+        
+            // Re-populate the subLevel dropdown when the mainLevel changes
+            mainLevelSelect.addEventListener('change', populateSubLevels);
+        });
+    </script>    
+</body>
+</html>

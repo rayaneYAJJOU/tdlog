@@ -1,0 +1,369 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/Cours_etr_résumés.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'css/Eas_favicon.ico' %}">
+    <title>Easier</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: serif, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fcfceb; /* A deep indigo color */
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            max-width: 120px;
+            height: auto;
+            background-color: transparent;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .nav-list li {
+            margin-left: 25px;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: #000000; /* Light gray for better contrast */
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-list li a:hover {
+            color: #FFD700; /* A bright gold color */
+            transform: scale(1.1); /* Slightly enlarges the text */
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-buttons button {
+            background-color: #FFD700; /* Bright gold color */
+            color: #2C2A4A; /* Matches the navbar background */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #E6B800; /* Slightly darker gold */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        .auth-buttons button a {
+            color: #2C2A4A; /* Matches the button color */
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar-vertical ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 15%;
+            background-color: #f5f5dc;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .navbar-vertical li a{
+            display: block;
+            color: #000;
+            padding: 15px 16px;
+            text-decoration: none;
+        }
+        .navbar-vertical li a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+        
+        .navbar-vertical li a:hover:not(.active) {
+            background-color: orange;
+            color: white;
+        }
+
+        footer {
+            background-color: #4A4DE7; /* Background color of the footer */
+            color: white;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 50px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section ul li i {
+            margin-right: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom p {
+            margin: 10px 0;
+        }
+
+        .footer-bottom a {
+            color: #FFD700; /* Link color */
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            margin-top: 10px;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #FFD700; /* Hover color */
+        }
+        .content {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .content h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .content h3 {
+            font-size: 1.8em;
+            color: #555;
+            margin-top: 40px;
+        }
+
+        .pdf-link {
+            margin-top: 20px;
+        }
+
+        .pdf-link img {
+            width: 300px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pdf-link img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 800px;
+            background-color: #ffffff; /* Light background to contrast with the page */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+        }
+
+        .main p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+            color: #333333; /* Darker text color for readability */
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .patientez img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Rounded corners for the image */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .patientez img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'css/logo_de_easier.png' %}" alt="Easier Logo" width="125px">
+        </div>
+        <ul class="nav-list">
+            <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Accueil</a></li>
+            <li><a href="{% url 'formation' %}"><i class="fa fa-graduation-cap"></i> Formation</a></li>
+            <li><a href="{% url 'cours' %}"><i class="fa fa-file-alt"></i> Cours et résumés</a></li>
+            <li><a href="{% url 'contact' %}"><i class="fa fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            {% if user.is_authenticated %}
+                <button class="signout"><a href="/signout">Déconnecter</a></button>
+            {% else %}
+                <button class="signup"><a href="/signup">Inscription</a></button>
+                <button class="signin"><a href="/signin">Connection</a></button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="navbar-vertical">
+        <ul>
+            <li><a href="{% url 'math' %}">Math</a></li>
+            <li><a href="{% url 'Physique' %}">Physique</a></li>
+            <li><a href="{% url 'Chimie' %}">Chimie</a></li>
+            <li><a href="{% url 'Fr' %}">Français</a></li>
+            <li><a href="{% url 'An' %}">Anglais</a></li>
+            <li><a href="{% url 'Si' %}">Sciences de l'ingénieur</a></li>
+            <li><a href="{% url 'Info' %}">Info</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1>Sciences de l'ingénieur</h1>
+        {% if pdf_url %}
+        <h3>Résumé Réseau triphasé équilibré</h3>
+        <div class="pdf-link">
+            <a href="{{ pdf_url }}" target="_blank"><img src="{% static 'css/Résumé_Réseau_triphasé_équilibré.png' %}" alt="Résumé_Réseau_triphasé_équilibré PDF"></a>
+        </div>
+        {% if pdf_url2 %}
+        <h3>Synthèse étude statique</h3>
+        <div class="pdf-link">
+            <a href="{{ pdf_url2 }}" target="_blank"><img src="{% static 'css/Synthèse_étude_statique.png' %}" alt="Synthèse_étude_statique PDF"></a>
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="main">
+            <p style="text-align: center;">Chers étudiants, nous vous invitons à rester passionnés et engagés dans votre apprentissage. Notre base de données de ressources pédagogiques s'enrichira progressivement pour mieux répondre à vos besoins académiques. Nous vous encourageons à continuer à consulter régulièrement notre plateforme pour accéder à de nouveaux contenus.</p>
+            <div class="patientez">
+                <img src="{% static 'css/patientez.png' %}" alt="patientez">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+                <li><i class="fas fa-phone"></i> Téléphone: 0774773296 / 0617667636</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Liens utiles</h3>
+            <ul>
+                <li><a href="{% url 'cours' %}">Nos cours</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; Copyrights 2024 tous droits réservés. | <a href="#">Politique de confidentialité</a></p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/easier_succeed_together?igsh=MW1pNXZydDRvenJ1cg=="><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/Easier.Succeed.Together?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/@easiersucceed_together?si=0NIj7F7L9mLDMNHz"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</footer>
+</html>

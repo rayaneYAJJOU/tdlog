@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/Cours_etr_résumés.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'css/Eas_favicon.ico' %}">
+    <title>Easier</title>
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fcfceb; /* A deep indigo color */
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            max-width: 120px;
+            height: auto;
+            background-color: transparent;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .nav-list li {
+            margin-left: 25px;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: #000000; /* Light gray for better contrast */
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-list li a:hover {
+            color: #FFD700; /* A bright gold color */
+            transform: scale(1.1); /* Slightly enlarges the text */
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-buttons button {
+            background-color: #FFD700; /* Bright gold color */
+            color: #2C2A4A; /* Matches the navbar background */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #E6B800; /* Slightly darker gold */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        .auth-buttons button a {
+            color: #2C2A4A; /* Matches the button color */
+            text-decoration: none;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern and clean font */
+            font-size: 36px; /* Larger font size for emphasis */
+            color: #333333; /* Darker text color for readability */
+            margin-top: 20px; /* Space above the heading */
+            margin-bottom: 20px; /* Space below the heading */
+            letter-spacing: 1px; /* Slight letter spacing for a refined look */
+            text-transform: uppercase; /* Make the heading text uppercase */
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 800px;
+            background-color: #ffffff; /* Light background to contrast with the page */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+        }
+
+        .main p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+            color: #333333; /* Darker text color for readability */
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .patientez img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Rounded corners for the image */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .patientez img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'css/logo_de_easier.png' %}" alt="Easier Logo" width="125px">
+        </div>
+        <ul class="nav-list">
+            <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Accueil</a></li>
+            <li><a href="{% url 'formation' %}"><i class="fa fa-graduation-cap"></i> Formation</a></li>
+            <li><a href="{% url 'cours' %}"><i class="fa fa-file-alt"></i> Cours et résumés</a></li>
+            <li><a href="{% url 'contact' %}"><i class="fa fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            {% if user.is_authenticated %}
+                <button class="signout"><a href="/signout">Déconnecter</a></button>
+            {% else %}
+                <button class="signup"><a href="/signup">Inscription</a></button>
+                <button class="signin"><a href="/signin">Connection</a></button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="navbar-vertical">
+        <ul>
+            <li><a href="{% url 'math' %}">Math</a></li>
+            <li><a href="{% url 'Physique' %}">Physique</a></li>
+            <li><a href="{% url 'Chimie' %}">Chimie</a></li>
+            <li><a href="{% url 'Fr' %}">Français</a></li>
+            <li><a href="{% url 'An' %}">Anglais</a></li>
+            <li><a href="{% url 'Si' %}">Sciences de l'ingénieur</a></li>
+            <li><a href="{% url 'Info' %}">Info</a></li>
+        </ul>
+    </div>
+    <h1 style="text-align: center;">Nos ressources</h1>
+    <div class="main content">
+        <p style="text-align: center;">Chers étudiants, nous vous invitons à rester passionnés et engagés dans votre apprentissage. Notre base de données de ressources pédagogiques s'enrichira progressivement pour mieux répondre à vos besoins académiques. Nous vous encourageons à continuer à consulter régulièrement notre plateforme pour accéder à de nouveaux contenus.</p>
+        <div class="patientez">
+            <img src="{% static 'css/patientez.png' %}" alt="patientez">
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+                <li><i class="fas fa-phone"></i> Téléphone: 0774773296 / 0617667636</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Liens utiles</h3>
+            <ul>
+                <li><a href="{% url 'cours' %}">Nos cours</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; Copyrights 2024 tous droits réservés. | <a href="#">Politique de confidentialité</a></p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/easier_succeed_together?igsh=MW1pNXZydDRvenJ1cg=="><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/Easier.Succeed.Together?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/@easiersucceed_together?si=0NIj7F7L9mLDMNHz"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</footer>
+</html>

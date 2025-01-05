@@ -1,0 +1,364 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'css/Eas_favicon.ico' %}">
+    <style>
+        /* Navbar */
+        body {
+            font-family: serif, sans-serif;
+            background-color: #f6f6f6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fcfceb; /* A deep indigo color */
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            max-width: 120px;
+            height: auto;
+            background-color: transparent;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .nav-list li {
+            margin-left: 25px;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: #000000; /* Light gray for better contrast */
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-list li a:hover {
+            color: #FFD700; /* A bright gold color */
+            transform: scale(1.1); /* Slightly enlarges the text */
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-buttons button {
+            background-color: #FFD700; /* Bright gold color */
+            color: #2C2A4A; /* Matches the navbar background */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #E6B800; /* Slightly darker gold */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        .auth-buttons button a {
+            color: #2C2A4A; /* Matches the button color */
+            text-decoration: none;
+        }
+
+
+        /* Main content */
+        .main-content {
+            padding: 20px;
+        }
+
+        .Welcome-Image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .Welcome-Image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .text-content {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: left;
+            margin-top: 30px; /* Increase margin for better spacing */
+            margin-bottom: 40px; /* Add space below the header */
+            font-size: 28px; /* Slightly larger font size */
+            font-weight: 700; /* Bolder text for emphasis */
+            color: #2C3E50; /* Darker, richer color for better contrast */
+            letter-spacing: 1px; /* Add letter spacing for improved readability */
+            line-height: 1.4; /* Better line height for readability */
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            display: block;
+            width: 60px; /* Width of the decorative underline */
+            height: 4px; /* Thickness of the underline */
+            background-color: #FFD700; /* Gold color for the underline */
+            margin-top: 8px; /* Spacing between text and underline */
+            border-radius: 2px; /* Rounded edges for a modern look */
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                font-size: 22px; /* Adjust font size for smaller screens */
+            }
+            
+            .header::after {
+                width: 40px; /* Reduce underline width for smaller screens */
+            }
+        }
+
+        .first-paragraph {
+            background-color: #FFF8DC; /* Softer cream color for a more elegant look */
+            border-radius: 12px; /* Slightly less rounded for a modern look */
+            padding: 24px; /* Increased padding for better text breathing space */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow for more depth */
+            font-size: 20px; /* Larger font size for better readability */
+            line-height: 1.8; /* Increased line height for a more open feel */
+            color: #2C3E50; /* Darker text color for improved contrast */
+            margin: 40px auto 20px; /* Increase top margin for more separation from header */
+            max-width: 800px; /* Restrict width for better readability on large screens */
+            text-align: justify; /* Justify text for a cleaner look */
+            position: relative;
+        }
+
+        .first-paragraph::before {
+            content: '“';
+            font-size: 50px;
+            color: #FFD700; /* Golden quote mark for a stylish touch */
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            line-height: 0;
+        }
+
+        .first-paragraph::after {
+            content: '”';
+            font-size: 50px;
+            color: #FFD700; /* Matching closing quote */
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            line-height: 0;
+        }
+
+
+
+        .Formation-button {
+            display: block;
+            margin: 40px auto 0;
+            text-align: center;
+            max-width: 220px; /* Slightly wider for more impact */
+        }
+
+        .Formation-button button {
+            background-color: #FFD700; /* Bright gold color */
+            color: #000000; /* Clear contrast for readability */
+            border: none;
+            padding: 12px 20px; /* Slightly more padding for comfort */
+            font-size: 24px; 
+            font-weight: 600; /* Bolder text for emphasis */
+            cursor: pointer;
+            border-radius: 8px; /* More rounded corners for a modern look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds depth */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .Formation-button button:hover {
+            background-color: #F1C40F; /* Slightly darker gold for hover */
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        .Formation-button button:active {
+            background-color: #D4AC0D; /* Even darker gold when pressed */
+            transform: translateY(0); /* Neutralize the lift on active */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow when pressed */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4A4DE7;
+            color: white;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 50px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section ul li i {
+            margin-right: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom p {
+            margin: 10px 0;
+        }
+
+        .footer-bottom a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            margin-top: 10px;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #FFD700;
+        }
+    </style>
+    <title>Easier</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'css/logo_de_easier.png' %}" alt="Easier Logo">
+        </div>
+        <ul class="nav-list">
+            <li><a href="{% url 'home' %}"><i class="fa fa-home"></i> Accueil</a></li>
+            <li><a href="{% url 'formation' %}"><i class="fa fa-graduation-cap"></i> Formation</a></li>
+            <li><a href="{% url 'cours' %}"><i class="fa fa-file-alt"></i> Cours et résumés</a></li>
+            <li><a href="{% url 'contact' %}"><i class="fa fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            {% if user.is_authenticated %}
+                <button class="signout"><a href="/signout">Déconnecter</a></button>
+            {% else %}
+                <button class="signup"><a href="/signup">Inscription</a></button>
+                <button class="signin"><a href="/signin">Connection</a></button>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="Welcome-Image">
+        <img src="{% static 'css/welcome.jpeg' %}" alt="Welcome">
+    </div>
+
+    <div class="main-content">
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="{% static 'css/videointro.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="text-content">
+            <h2 class="header">Easier en quelques mots!</h2>
+            <p class="first-paragraph">Easier est une startup formée par des élèves ingénieurs, spécialisée dans les cours de soutien scolaire à distance et en présentiel pour les niveaux lycée et classe prépa. Notre mission est de fournir un accompagnement personnalisé et efficace pour aider chaque étudiant à atteindre son plein potentiel académique.</p>
+            <img src="{% static 'css/quote_easier.png' %}" alt="Study path with Easier" style="width:100%; height:auto; margin-top:20px;">
+            <a class="Formation-button" href="{% url 'formation' %}">
+                <button>Voir nos formations</button>
+            </a>
+        </div>
+        
+    </div>
+    
+    
+</body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+                <li><i class="fas fa-phone"></i> Téléphone: 0774773296 / 0617667636</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Liens utiles</h3>
+            <ul>
+                <li><a href="{% url 'cours' %}">Nos cours</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; Copyrights 2024 tous droits réservés. | <a href="#">Politique de confidentialité</a></p>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/easier_succeed_together?igsh=MW1pNXZydDRvenJ1cg=="><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/Easier.Succeed.Together?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/@easiersucceed_together?si=0NIj7F7L9mLDMNHz"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</footer>
+
+</html>
